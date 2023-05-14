@@ -15,10 +15,10 @@ const MyApp: AppType<{ session: Session | null }> = ({
   return (
     <SessionProvider session={session}>
       <Head>
-        <title>Twitter Clone</title>
+        <title>Jwm Twitter</title>
         <meta
           name="description"
-          content="This is a Twitter clone by Web Dev Simplified"
+          content="This is a Twitter clone by JWM"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
