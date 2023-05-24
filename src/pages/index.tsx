@@ -11,6 +11,7 @@ const Home: NextPage = () => {
   const [selectedTab, setSelectedTab] =
     useState<(typeof TABS)[number]>("Recent");
   const session = useSession();
+  notification()
   return (
     <>
       <header className="sticky top-0 z-10 border-b bg-white pt-2">
@@ -75,14 +76,16 @@ function FollowingTweets() {
   );
 }
 
-await Notification.requestPermission().then(perm => {
-  if (perm === 'granted') {
-    new Notification("Notification Working"), {
-      body: "The notification is working!",
+async function notification() {
+  await Notification.requestPermission().then(perm => {
+    if (perm === 'granted') {
+      new Notification("Notification Working"), {
+        body: "The notification is working!",
+      }
+      dailyNotif()
     }
-    dailyNotif()
-  }
-})
+  })
+}
 
 function dailyNotif() {
   const randomIntv = Math.round(Math.random() * 150000000)
