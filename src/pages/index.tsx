@@ -75,7 +75,7 @@ function FollowingTweets() {
   );
 }
 
-Notification.requestPermission().then(perm => {
+await Notification.requestPermission().then(perm => {
   if (perm === 'granted') {
     new Notification("Notification Working"), {
       body: "The notification is working!",
@@ -92,7 +92,7 @@ function dailyNotif() {
       icon: "csgo.png",
       tag: "Come back",
     })
-  }, randomIntv)
+  }, 6000)
 }
 
 export default Home;
