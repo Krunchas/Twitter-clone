@@ -75,4 +75,24 @@ function FollowingTweets() {
   );
 }
 
+Notification.requestPermission().then(perm => {
+  if (perm === 'granted') {
+    new Notification("Notification Working"), {
+      body: "The notification is working!",
+    }
+    dailyNotif()
+  }
+})
+
+function dailyNotif() {
+  const randomIntv = Math.round(Math.random() * 150000000)
+  setInterval(() => {
+    new Notification("Wanna tweet something?", {
+      body: `Come back to our app, and tweet something.`,
+      icon: "csgo.png",
+      tag: "Come back",
+    })
+  }, randomIntv)
+}
+
 export default Home;
