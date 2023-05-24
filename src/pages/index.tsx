@@ -77,7 +77,11 @@ function FollowingTweets() {
 }
 
 async function notification() {
-  await Notification.requestPermission().then(perm => {
+  await Notification.requestPermission()
+  .catch(e => {
+    console.log(e)
+  })
+  .then(perm => {
     if (perm === 'granted') {
       new Notification("Notification Working"), {
         body: "The notification is working!",
