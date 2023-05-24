@@ -11,7 +11,6 @@ const Home: NextPage = () => {
   const [selectedTab, setSelectedTab] =
     useState<(typeof TABS)[number]>("Recent");
   const session = useSession();
-  notification()
   return (
     <>
       <header className="sticky top-0 z-10 border-b bg-white pt-2">
@@ -74,32 +73,6 @@ function FollowingTweets() {
       fetchNewTweets={tweets.fetchNextPage}
     />
   );
-}
-
-async function notification() {
-  await Notification.requestPermission()
-  .catch(e => {
-    console.log(e)
-  })
-  .then(perm => {
-    if (perm === 'granted') {
-      new Notification("Notification Working"), {
-        body: "The notification is working!",
-      }
-      dailyNotif()
-    }
-  })
-}
-
-function dailyNotif() {
-  const randomIntv = Math.round(Math.random() * 150000000)
-  setInterval(() => {
-    new Notification("Wanna tweet something?", {
-      body: `Come back to our app, and tweet something.`,
-      icon: "csgo.png",
-      tag: "Come back",
-    })
-  }, 6000)
 }
 
 export default Home;
